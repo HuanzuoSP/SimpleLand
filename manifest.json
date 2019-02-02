@@ -1,0 +1,18 @@
+{
+    "format_version": 1,
+    "header": {
+        "description": "作者:幻作 版本:[Beta]v0.1.0 'Ash to ash,dust to dust.どうか忘れないで.'",
+        "name": "全自动领地系统",
+        "uuid": "48cf1070-a6fb-4417-a5aa-91fdd32bc8c4",
+        "version": [1, 8, 1],
+        "min_engine_version": [1, 8, 0]
+    },
+    "modules": [
+        {
+            "description": "",
+            "type": "data",
+            "uuid": "3df3ad3b-68c4-4c0f-9b09-024d7b71babf",
+            "version": [1, 8, 1]
+        }
+    ]
+}
