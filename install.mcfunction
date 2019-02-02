@@ -44,3 +44,4 @@ scoreboard objectives add LandInfo dummy 领地信息
 scoreboard objectives add LandPassword dummy 领地密码
 scoreboard objectives add CountF dummy CountF
 scoreboard objectives add CountG dummy CountG
+scoreboard objectives add CreateLand dummy 创建领地
