@@ -1,5 +1,5 @@
 # Land-for-Minecraft-BE
-# V1.0.1手动更新过程
+# V1.0.2手动更新过程
 创建新的积分项
 
 /scoreboard objectives add CreateLand dummy 创建领地
