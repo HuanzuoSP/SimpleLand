@@ -1,0 +1,16 @@
+#自动安装部分
+/function install
+#手动安装部分
+#放置盔甲架并分别命名0-9后输入下面命令
+/scoreboard players set @e[type=armor_stand,name=”1”] CounterID 1
+/scoreboard players set @e[type=armor_stand,name=”2”] CounterID 2
+/scoreboard players set @e[type=armor_stand,name=”3”] CounterID 3
+/scoreboard players set @e[type=armor_stand,name=”4”] CounterID 4
+/scoreboard players set @e[type=armor_stand,name=”5”] CounterID 5
+/scoreboard players set @e[type=armor_stand,name=”6”] CounterID 6
+/scoreboard players set @e[type=armor_stand,name=”7”] CounterID 7
+/scoreboard players set @e[type=armor_stand,name=”8”] CounterID 8
+/scoreboard players set @e[type=armor_stand,name=”9”] CounterID 9
+/scoreboard players set @e[type=armor_stand,name=”0”] CounterID 10
+#运行
+/function land
