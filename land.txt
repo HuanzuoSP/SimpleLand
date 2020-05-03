@@ -1,0 +1,357 @@
+
+
+
+#自动分配ID系统
+##################################################################################
+#[命令]
+scoreboard players add @r LoginInfo 0
+scoreboard players add @r[scores={LoginInfo=0}] LoginInfo 1
+execute @r[scores={LoginInfo=1}] ~ ~ ~ scoreboard players add RegPlayer RegInfo 1
+execute @r[scores={LoginInfo=1}] ~ ~ ~ scoreboard players operation @s PlayerID = RegPlayer RegInfo
+execute @r[scores={LoginInfo=1}] ~ ~ ~ scoreboard players add @s LoginInfo 1
+##################################################################################
+
+
+
+
+
+物品标记
+##################################################################################
+#初始化物品标记
+scoreboard players add @e[type=item] ItemDistinguish 0
+#标记丢出的物品
+scoreboard players add @e[type=item,scores={ItemDistinguish=0}] ItemDistinguish 1
+##################################################################################
+
+
+
+
+
+底部信息
+##################################################################################
+#初始化底部信息
+scoreboard players add @r Actionbar 0
+###开启底部信息
+execute @e[type=item,name="开启底部信息",scores={ItemDistinguish=0}] ~ ~ ~ scoreboard players set @p Actionbar 1
+#回收
+scoreboard players add @e[type=item,name="开启底部信息",scores={ItemDistinguish=0}] ItemDistinguish 1
+###关闭底部信息
+execute @e[type=item,name="关闭底部信息",scores={ItemDistinguish=0}] ~ ~ ~ scoreboard players set @p Actionbar 0
+#回收
+scoreboard players add @e[type=item,name="关闭底部信息",scores={ItemDistinguish=0}] ItemDistinguish 1
+#限制底部信息设置范围
+scoreboard players add @r[scores={Actionbar=..-1}] Actionbar 1
+scoreboard players remove @r[scores={Actionbar=2..}] Actionbar 1
+##################################################################################
+
+
+
+
+
+#密码系统
+##################################################################################
+#初始化PasswordInfo & Password
+scoreboard players add @r PasswordInfo 0
+scoreboard players add @r Password 0
+#初始化玩家密码
+scoreboard players random @r[scores={PasswordInfo=0}] Password 0 9999
+#标记已初始化密码的玩家
+scoreboard players add @r[scores={PasswordInfo=0}] PasswordInfo 1
+##################################################################################
+
+
+
+
+
+#Title
+##################################################################################
+#初始化Title查看密码
+scoreboard players add @r SeePassword 0
+###显示密码
+execute @e[type=item,name="查看密码",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p[scores={SeePassword=0}] SeePassword 1
+scoreboard players add @e[type=item,name="查看密码",scores={ItemDistinguish=1}] ItemDistinguish 1
+#[计算]
+#个位
+#重写数值
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "1" PasswordA 1
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "2" PasswordA 2
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "3" PasswordA 3
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "4" PasswordA 4
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "5" PasswordA 5
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "6" PasswordA 6
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "7" PasswordA 7
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "8" PasswordA 8
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "9" PasswordA 9
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players set "0" PasswordA 0
+
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation @s PasswordA = @s Password
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation @s PasswordA %= "计数器" CountD
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation @s PasswordA %= "计数器" CountC
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation @s PasswordA %= "计数器" CountB
+
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "1" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "2" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "3" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "4" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "5" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "6" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "7" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "8" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "9" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players operation "0" PasswordA -= @s PasswordA
+execute @r[scores={SeePassword=1}] ~ ~ ~ scoreboard players add @s SeePassword 1
+#十位
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "1" PasswordB 1
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "2" PasswordB 2
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "3" PasswordB 3
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "4" PasswordB 4
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "5" PasswordB 5
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "6" PasswordB 6
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "7" PasswordB 7
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "8" PasswordB 8
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "9" PasswordB 9
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players set "0" PasswordB 0
+
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation @s PasswordB = @s Password
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation @s PasswordB %= "计数器" CountD
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation @s PasswordB %= "计数器" CountC
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation @s PasswordB /= "计数器" CountB
+
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "1" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "2" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "3" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "4" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "5" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "6" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "7" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "8" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "9" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players operation "0" PasswordB -= @s PasswordB
+execute @r[scores={SeePassword=2}] ~ ~ ~ scoreboard players add @s SeePassword 1
+#百位
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "1" PasswordC 1
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "2" PasswordC 2
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "3" PasswordC 3
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "4" PasswordC 4
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "5" PasswordC 5
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "6" PasswordC 6
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "7" PasswordC 7
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "8" PasswordC 8
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "9" PasswordC 9
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players set "0" PasswordC 0
+
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation @s PasswordC = @s Password
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation @s PasswordC %= "计数器" CountD
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation @s PasswordC /= "计数器" CountC
+
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "1" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "2" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "3" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "4" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "5" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "6" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "7" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "8" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "9" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players operation "0" PasswordC -= @s PasswordC
+execute @r[scores={SeePassword=3}] ~ ~ ~ scoreboard players add @s SeePassword 1
+#千位
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "1" PasswordD 1
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "2" PasswordD 2
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "3" PasswordD 3
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "4" PasswordD 4
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "5" PasswordD 5
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "6" PasswordD 6
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "7" PasswordD 7
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "8" PasswordD 8
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "9" PasswordD 9
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players set "0" PasswordD 0
+
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation @s PasswordD = @s Password
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation @s PasswordD /= "计数器" CountD
+
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "1" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "2" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "3" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "4" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "5" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "6" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "7" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "8" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "9" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players operation "0" PasswordD -= @s PasswordD
+execute @r[scores={SeePassword=4}] ~ ~ ~ scoreboard players add @s SeePassword 1
+
+#数据转移A
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="1",scores={CounterID=1}] PasswordA = "1" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="2",scores={CounterID=2}] PasswordA = "2" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="3",scores={CounterID=3}] PasswordA = "3" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="4",scores={CounterID=4}] PasswordA = "4" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="5",scores={CounterID=5}] PasswordA = "5" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="6",scores={CounterID=6}] PasswordA = "6" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="7",scores={CounterID=7}] PasswordA = "7" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="8",scores={CounterID=8}] PasswordA = "8" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="9",scores={CounterID=9}] PasswordA = "9" PasswordA
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="0",scores={CounterID=10}] PasswordA = "0" PasswordA
+#数据转移B
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="1",scores={CounterID=1}] PasswordB = "1" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="2",scores={CounterID=2}] PasswordB = "2" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="3",scores={CounterID=3}] PasswordB = "3" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="4",scores={CounterID=4}] PasswordB = "4" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="5",scores={CounterID=5}] PasswordB = "5" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="6",scores={CounterID=6}] PasswordB = "6" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="7",scores={CounterID=7}] PasswordB = "7" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="8",scores={CounterID=8}] PasswordB = "8" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="9",scores={CounterID=9}] PasswordB = "9" PasswordB
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="0",scores={CounterID=10}] PasswordB = "0" PasswordB
+#数据转移C
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="1",scores={CounterID=1}] PasswordC = "1" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="2",scores={CounterID=2}] PasswordC = "2" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="3",scores={CounterID=3}] PasswordC = "3" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="4",scores={CounterID=4}] PasswordC = "4" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="5",scores={CounterID=5}] PasswordC = "5" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="6",scores={CounterID=6}] PasswordC = "6" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="7",scores={CounterID=7}] PasswordC = "7" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="8",scores={CounterID=8}] PasswordC = "8" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="9",scores={CounterID=9}] PasswordC = "9" PasswordC
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="0",scores={CounterID=10}] PasswordC = "0" PasswordC
+#数据转移D
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="1",scores={CounterID=1}] PasswordD = "1" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="2",scores={CounterID=2}] PasswordD = "2" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="3",scores={CounterID=3}] PasswordD = "3" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="4",scores={CounterID=4}] PasswordD = "4" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="5",scores={CounterID=5}] PasswordD = "5" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="6",scores={CounterID=6}] PasswordD = "6" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="7",scores={CounterID=7}] PasswordD = "7" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="8",scores={CounterID=8}] PasswordD = "8" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="9",scores={CounterID=9}] PasswordD = "9" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players operation @e[type=armor_stand,name="0",scores={CounterID=10}] PasswordD = "0" PasswordD
+execute @r[scores={SeePassword=5}] ~ ~ ~ scoreboard players add @s SeePassword 1
+
+execute @r[scores={SeePassword=6}] ~ ~ ~ title @s title 领地密码:@e[scores={PasswordD=0},type=armor_stand]@e[scores={PasswordC=0},type=armor_stand]@e[scores={PasswordB=0},type=armor_stand]@e[scores={PasswordA=0},type=armor_stand]
+#结束SeePassword
+execute @r[scores={SeePassword=6}] ~ ~ ~ scoreboard players reset @s SeePassword
+##################################################################################
+
+
+
+
+
+#修改密码
+##################################################################################
+#修改第千位密码
+execute @e[type=item,name="+1000",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p Password 1000
+execute @e[type=item,name="+1000",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p ItemDistinguish 1
+scoreboard players add @e[type=item,name="+1000",scores={ItemDistinguish=1}] ItemDistinguish 1
+execute @e[type=item,name="-1000",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players remove @p Password 1000
+execute @e[type=item,name="-1000",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p ItemDistinguish 1
+scoreboard players add @e[type=item,name="-1000",scores={ItemDistinguish=1}] ItemDistinguish 1
+#修改第百位密码
+execute @e[type=item,name="+0100",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p Password 100
+execute @e[type=item,name="+0100",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p ItemDistinguish 1
+scoreboard players add @e[type=item,name="+0100",scores={ItemDistinguish=1}] ItemDistinguish 1
+execute @e[type=item,name="-0100",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players remove @p Password 100
+execute @e[type=item,name="-0100",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p ItemDistinguish 1
+scoreboard players add @e[type=item,name="-0100",scores={ItemDistinguish=1}] ItemDistinguish 1
+#修改第十位密码
+execute @e[type=item,name="+0010",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p Password 1000
+execute @e[type=item,name="+0010",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p ItemDistinguish 1
+scoreboard players add @e[type=item,name="+0010",scores={ItemDistinguish=1}] ItemDistinguish 1
+execute @e[type=item,name="-0010",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players remove @p Password 10
+execute @e[type=item,name="-0010",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p ItemDistinguish 1
+scoreboard players add @e[type=item,name="-0010",scores={ItemDistinguish=1}] ItemDistinguish 1
+#修改第个位密码
+execute @e[type=item,name="+0001",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p Password 1
+execute @e[type=item,name="+0001",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p ItemDistinguish 1
+scoreboard players add @e[type=item,name="+0001",scores={ItemDistinguish=1}] ItemDistinguish 1
+execute @e[type=item,name="-0001",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players remove @p Password 1
+execute @e[type=item,name="-0001",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p ItemDistinguish 1
+scoreboard players add @e[type=item,name="-0001",scores={ItemDistinguish=1}] ItemDistinguish 1
+#限制密码位数
+scoreboard players operation @r[scores={Password=10000..}] Password %= "计数器" CountE
+scoreboard players operation @r[scores={Password=..-1}] Password += "计数器" CountE
+###打乱密码
+execute @e[type=item,name="打乱密码",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players random @p Password 0 9999
+execute @e[type=item,name="打乱密码",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p SeePassword 1
+scoreboard players add @e[type=item,name="打乱密码",scores={ItemDistinguish=1}] ItemDistinguish 1
+##################################################################################
+
+
+
+
+
+#Help菜单
+##################################################################################
+execute @e[type=item,name="help",scores={ItemDistinguish=1}] ~ ~ ~ tell @p 重命名的物品功能预览 "圈地"的钻石丢到绿宝石块上,可圈地 "+1000"或"-1000",可修改领地密码的第一位 "+0100"或"-0100",可修改领地密码的第二位 "+0010"或"-0010",可修改领地密码的第三位 "+0001"或"-0001",可修改领地密码的第四位 把密码修改为 好友告诉你的数字 ,可获得他的领地生存模式权限 修改密码后重新进入你的领地,可修改领地的访问密码 "打乱密码"的物品丢出,可将密码随机设置 修改密码后重新进入你的领地,可修改领地的访问密码
+scoreboard players add @e[type=item,name="help",scores={ItemDistinguish=1}] ItemDistinguish 1
+##################################################################################
+
+
+
+
+
+#领地系统
+##################################################################################
+#[圈地命令]
+#初始化圈地状态
+scoreboard players add @r CreateLand 0
+#玩家进入圈地状态
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @p[scores={CreateLand=0}] CreateLand 1
+#判断领地是否重叠
+execute @r[scores={CreateLand=1}] ~ ~ ~ execute @e[type=item,name="圈地",scores={ItemDistinguish=1}] ~ ~ ~ detect ~ ~-1 ~ beacon 0 scoreboard players add @s LandInfo 0
+execute @r[scores={CreateLand=1}] ~ ~ ~ execute @e[x=~-31,y=0,z=~-31,dx=62,dz=62,type=leash_knot,c=1,scores={LandID=1..}] ~ ~ ~ scoreboard players add @e[type=item,name="圈地",c=1,scores={ItemDistinguish=1,LandInfo=0}] LandInfo 1
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=1}] ~ ~ ~ title @p[scores={CreateLand=1}] subtitle 这里和另一块领地存在重叠
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=1}] ~ ~ ~ title @p[scores={CreateLand=1}] title §4圈地失败!
+#标记圈地失败的物品
+scoreboard players add @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=1}] ItemDistinguish 1
+#圈地失败退出圈地状态
+execute @e[type=item,name="圈地",scores={ItemDistinguish=2,LandInfo=1}] ~ ~ ~ scoreboard players remove @p[scores={CreateLand=1}] CreateLand 1
+#生成领地
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=0}] ~ ~ ~ fill ~-15 0 ~-15 ~16 0 ~16 barrier 0
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=0}] ~ ~ ~ fill ~ 1 ~ ~ 3 ~ barrier 0
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=0}] ~ ~ ~ fill ~ 0 ~ ~ 0 ~ nether_brick_fence 0 destroy
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=0}] ~ ~ ~ summon leash_knot ~ 0 ~
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=0}] ~ ~ ~ scoreboard players operation @e[type=leash_knot,y=0,c=1] LandID = @p[scores={CreateLand=1}] PlayerID
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=0}] ~ ~ ~ scoreboard players operation @e[type=leash_knot,y=0,c=1] LandPassword = @p[scores={CreateLand=1}] Password
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=0}] ~ ~ ~ title @p title §6圈地成功!
+#标记圈地成功的物品
+execute @e[type=item,name="圈地",scores={ItemDistinguish=1,LandInfo=0}] ~ ~ ~ scoreboard players add @s ItemDistinguish 1
+#圈地成功退出圈地状态
+execute @e[type=item,name="圈地",scores={ItemDistinguish=2,LandInfo=0}] ~ ~ ~ scoreboard players reset @p[scores={CreateLand=1},r=5] CreateLand
+execute @e[type=item,name="圈地",scores={ItemDistinguish=2,LandInfo=0}] ~ ~ ~ kill @s
+###领地拆除
+#execute @e[type=item,name="拆除领地",scores={ItemDistinguish=1}] ~ ~ ~ execute @p[scores={b=0}] ~ ~ ~ detect ~ ~-1 ~ barrier 0 fill ~-15 0 ~-15 ~16 3 ~16 bedrock 0
+#execute @e[type=item,name="拆除领地",scores={ItemDistinguish=1}] ~ ~ ~ title @p[scores={b=0}] title §4领地拆除成功!
+#execute @e[type=item,name="拆除领地",scores={ItemDistinguish=1}] ~ ~ ~ scoreboard players add @s ItemDistinguish 1
+#execute @e[type=item,name="拆除领地",scores={ItemDistinguish=2}] ~ ~ ~ kill @s
+#[命令]
+scoreboard players add @r LogLand 0
+scoreboard players add @r LogoutLand 0
+
+#领地请求未登入领地的玩家登入
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=0,LogoutLand=1}] ~ ~ ~ scoreboard players add @s LogLand 1
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=1,LogoutLand=1}] ~ ~ ~ scoreboard players operation @s a = @s PlayerID
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=1,LogoutLand=1}] ~ ~ ~ scoreboard players add @s LogLand 1
+#更新钥匙
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,a=1..}] ~ ~ ~ scoreboard players operation @s a -= @e[type=leash_knot,c=1,scores={LandID=1..}] LandID
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,a=0}] ~ ~ ~ scoreboard players operation @s Password = @e[type=leash_knot,c=1,scores={LandID=1..}] LandPassword
+#匹配钥匙
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,a=!0}] ~ ~ ~ scoreboard players operation @s b = @s Password
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,a=!0}] ~ ~ ~ scoreboard players operation @s b -= @e[type=leash_knot,c=1,scores={LandID=1..}] LandPassword
+#使领地内为”b”为<0>分的玩家,该玩家游戏模式由冒险变为生存
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,a=0},m=a] ~ ~ ~ gamemode s @s
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,a=0},m=s] ~ ~ ~ scoreboard players add @s LogLand 1
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,b=0},m=a] ~ ~ ~ gamemode s @s
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,b=0},m=s] ~ ~ ~ scoreboard players add @s LogLand 1
+#使领地内除了”b”为<0>分的玩家,该玩家游戏模式由生存变为冒险
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,b=!0},m=s] ~ ~ ~ gamemode a @s
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=2,LogoutLand=1,b=!0},m=a] ~ ~ ~ scoreboard players add @s LogLand 1
+#登入成功
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=3,LogoutLand=1}] ~ ~ ~ scoreboard players remove @s LogoutLand 1
+execute @e[type=leash_knot,scores={LandID=1..}] ~ ~ ~ execute @r[x=~-15,y=0,z=~-15,dx=32,dy=256,dz=32,scores={LogLand=3,LogoutLand=0}] ~ ~ ~ scoreboard players remove @s LogLand 3
+#登出领地的冒险模式玩家变为生存模式
+execute @r[scores={LogLand=0,LogoutLand=0},m=a] ~ ~ ~ detect ~ 0 ~ bedrock 0 gamemode s @s
+execute @r[scores={LogLand=0,LogoutLand=0},m=s] ~ ~ ~ detect ~ 0 ~ bedrock 0 scoreboard players add @s LogoutLand 1
+execute @r[scores={LogLand=0,LogoutLand=0},m=a] ~ ~ ~ detect ~ 0 ~ bedrock 0 gamemode s @s
+execute @r[scores={LogLand=0,LogoutLand=0},m=s] ~ ~ ~ detect ~ 0 ~ bedrock 0 scoreboard players add @s LogoutLand 1
+##################################################################################
