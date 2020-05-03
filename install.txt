@@ -1,0 +1,45 @@
+#领地前置
+#[变量]
+scoreboard objectives add LoginInfo dummy 登入信息
+scoreboard objectives add RegInfo dummy 注册信息
+scoreboard objectives add RegPlayer dummy 注册人数
+scoreboard objectives add PlayerID dummy 玩家ID
+#{计数器}
+#[变量]
+scoreboard objectives add Counter dummy 计数器
+scoreboard objectives add CounterID dummy 计数器ID
+scoreboard objectives add CountA dummy 个
+scoreboard objectives add CountB dummy 十
+scoreboard objectives add CountC dummy 百
+scoreboard objectives add CountD dummy 千
+scoreboard objectives add CountE dummy 万
+#[运行]
+scoreboard players add 计数器 CountA 1
+scoreboard players add 计数器 CountB 10
+scoreboard players add 计数器 CountC 100
+scoreboard players add 计数器 CountD 1000
+scoreboard players add 计数器 CountE 10000
+#{密码系统+菜单系统}
+#领地前置
+#[变量]
+scoreboard objectives add Password dummy 密码
+scoreboard objectives add PasswordA dummy 密码A
+scoreboard objectives add PasswordB dummy 密码B
+scoreboard objectives add PasswordC dummy 密码C
+scoreboard objectives add PasswordD dummy 密码D
+scoreboard objectives add PasswordInfo dummy 密码信息
+scoreboard objectives add ItemDistinguish dummy 物品识别
+scoreboard objectives add Actionbar dummy 底部显示
+scoreboard objectives add SeePassword dummy 查看密码
+
+#{简易的领地系统}
+#[变量]
+scoreboard objectives add PlayerID dummy 玩家ID
+scoreboard objectives add LandID dummy 领地ID
+scoreboard objectives add LandInfo dummy 领地信息
+scoreboard objectives add LandPassword dummy 领地密码
+scoreboard objectives add a dummy a
+scoreboard objectives add b dummy b
+scoreboard objectives add CreateLand dummy 创建领地
+scoreboard objectives add LogLand dummy 登入领地
+scoreboard objectives add LogoutLand dummy 登出领地
